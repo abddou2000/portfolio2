@@ -1,13 +1,42 @@
 import { useState } from 'react'
 
-export default function Contact({ t }) {
-  const [sent, setSent] = useState(false)
+const FORMSPREE_ENDPOINT = import.meta.env.VITE_FORMSPREE_ENDPOINT || ''
 
-  const onSubmit = (e) => {
+export default function Contact({ t }) {
+  const [status, setStatus] = useState({ state: 'idle', msg: '' })
+
+  const onSubmit = async (e) => {
     e.preventDefault()
-    setSent(true)
-    setTimeout(() => setSent(false), 4000)
+
+    if (!FORMSPREE_ENDPOINT) {
+      setStatus({ state: 'error', msg: t.form.notConfigured })
+      return
+    }
+
+    setStatus({ state: 'loading', msg: t.form.sending })
+
+    const form = e.target
+    const fd = new FormData(form)
+
+    try {
+      const res = await fetch(FORMSPREE_ENDPOINT, {
+        method: 'POST',
+        body: fd,
+        headers: { Accept: 'application/json' },
+      })
+
+      if (res.ok) {
+        setStatus({ state: 'success', msg: t.form.success })
+        form.reset()
+      } else {
+        setStatus({ state: 'error', msg: t.form.error })
+      }
+    } catch {
+      setStatus({ state: 'error', msg: t.form.error })
+    }
   }
+
+  const loading = status.state === 'loading'
 
   return (
     <section id="contact" className="dark">
@@ -50,25 +79,37 @@ export default function Contact({ t }) {
           </div>
         </div>
 
-        <form className="contact-form reveal" data-delay="1" onSubmit={onSubmit}>
+        <form className="contact-form reveal" data-delay="1" onSubmit={onSubmit} noValidate>
           <div className="field">
             <label htmlFor="name">{t.form.name}</label>
-            <input id="name" type="text" required placeholder={t.form.namePh} />
+            <input id="name" name="name" type="text" required placeholder={t.form.namePh} disabled={loading} />
           </div>
           <div className="field">
             <label htmlFor="email">{t.form.email}</label>
-            <input id="email" type="email" required placeholder={t.form.emailPh} />
+            <input id="email" name="email" type="email" required placeholder={t.form.emailPh} disabled={loading} />
           </div>
           <div className="field">
             <label htmlFor="subject">{t.form.subject}</label>
-            <input id="subject" type="text" placeholder={t.form.subjectPh} />
+            <input id="subject" name="subject" type="text" placeholder={t.form.subjectPh} disabled={loading} />
           </div>
           <div className="field">
             <label htmlFor="message">{t.form.message}</label>
-            <textarea id="message" rows={5} required placeholder={t.form.messagePh} />
+            <textarea id="message" name="message" rows={5} required placeholder={t.form.messagePh} disabled={loading} />
           </div>
-          <button type="submit" className="btn btn-primary" style={{ width: '100%', justifyContent: 'center' }}>
-            {sent ? '✓ ' : ''}{t.form.send} <span className="arrow">→</span>
+
+          {status.state !== 'idle' && (
+            <div className={`form-status form-status-${status.state}`} role="status" aria-live="polite">
+              {status.msg}
+            </div>
+          )}
+
+          <button
+            type="submit"
+            className="btn btn-primary"
+            style={{ width: '100%', justifyContent: 'center' }}
+            disabled={loading || status.state === 'success'}
+          >
+            {loading ? t.form.sending : t.form.send} <span className="arrow">→</span>
           </button>
         </form>
       </div>
