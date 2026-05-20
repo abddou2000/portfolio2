@@ -1,0 +1,43 @@
+export default function About({ t }) {
+  return (
+    <section id="about" className="alt">
+      <div className="container about-grid">
+        <aside className="reveal">
+          <div className="sticky">
+            <span className="eyebrow">{t.eyebrow}</span>
+            <div style={{ marginTop: 28 }}>
+              <span className="divider left" />
+            </div>
+            <p
+              className="muted"
+              style={{
+                fontFamily: 'var(--font-mono)',
+                fontSize: '0.72rem',
+                letterSpacing: '0.18em',
+                textTransform: 'uppercase',
+                marginTop: 24,
+                lineHeight: 1.7,
+              }}
+            >
+              {t.stickyLabel}
+            </p>
+          </div>
+        </aside>
+
+        <div className="reveal" data-delay="1">
+          <h2 className="display-2" style={{ marginBottom: 36 }}>
+            {t.title}
+          </h2>
+
+          <div className="about-body">
+            {t.body.map((p, i) => <p key={i}>{p}</p>)}
+            <blockquote className="pull">{t.pull}</blockquote>
+            {t.bodyEnd.map((p, i) => <p key={i}>{p}</p>)}
+          </div>
+
+          <div className="about-signature">{t.signature}</div>
+        </div>
+      </div>
+    </section>
+  )
+}
