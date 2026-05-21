@@ -6,6 +6,7 @@ import Nav from './components/Nav.jsx'
 import Hero from './components/Hero.jsx'
 import About from './components/About.jsx'
 import Expertise from './components/Expertise.jsx'
+import Skills from './components/Skills.jsx'
 import Journey from './components/Journey.jsx'
 import Experience from './components/Experience.jsx'
 import Research from './components/Research.jsx'
@@ -31,6 +32,7 @@ export default function App() {
         <Hero t={t.hero} />
         <About t={t.about} />
         <Expertise t={t.expertise} />
+        <Skills t={t.skills} />
         <Journey t={t.journey} />
         <Experience t={t.experience} />
         <Research t={t.research} />

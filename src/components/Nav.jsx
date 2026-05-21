@@ -18,12 +18,13 @@ export default function Nav({ t, lang, setLang }) {
       <div className="container nav-inner">
         <a href="#top" className="logo" onClick={closeMenu}>
           Driss<span className="dot" />Boubkiri
-          <small>· PhD</small>
+          <small>· MSc</small>
         </a>
 
         <nav className={`nav-links ${open ? 'open' : ''}`}>
           <a href="#about" onClick={closeMenu}>{t.nav.about}</a>
           <a href="#expertise" onClick={closeMenu}>{t.nav.expertise}</a>
+          <a href="#skills" onClick={closeMenu}>{t.nav.skills}</a>
           <a href="#journey" onClick={closeMenu}>{t.nav.journey}</a>
           <a href="#research" onClick={closeMenu}>{t.nav.research}</a>
           <a href="#publications" onClick={closeMenu}>{t.nav.publications}</a>

@@ -657,6 +657,65 @@ section.dark .btn-secondary:hover {
 }
 
 /* =========================================================
+   SKILLS
+   ========================================================= */
+.skills-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 24px 40px;
+  margin-top: 60px;
+}
+.skill-row {
+  display: flex;
+  gap: 24px;
+  align-items: flex-start;
+  padding: 24px 0;
+  border-top: 1px solid rgba(0,0,0,0.08);
+  transition: padding 0.4s var(--ease-out);
+}
+.skill-row:hover { padding-left: 8px; }
+.skill-icon-wrap {
+  flex-shrink: 0;
+  width: 52px;
+  height: 52px;
+  border-radius: 50%;
+  background: var(--linen);
+  display: grid;
+  place-items: center;
+  border: 1px solid rgba(184, 148, 90, 0.3);
+  transition: background 0.4s var(--ease-out), border-color 0.4s var(--ease-out);
+}
+.skill-row:hover .skill-icon-wrap {
+  background: var(--gold);
+  border-color: var(--gold);
+}
+.skill-row:hover .skill-icon { color: var(--paper); }
+.skill-icon {
+  width: 24px;
+  height: 24px;
+  color: var(--gold);
+  stroke-width: 1.25;
+  transition: color 0.4s var(--ease-out);
+}
+.skill-body h3 {
+  font-family: var(--font-display);
+  font-size: 1.25rem;
+  font-weight: 500;
+  letter-spacing: -0.01em;
+  margin-bottom: 8px;
+  line-height: 1.25;
+}
+.skill-body p {
+  color: var(--ink-soft);
+  font-size: 0.96rem;
+  line-height: 1.6;
+}
+
+@media (max-width: 720px) {
+  .skills-grid { grid-template-columns: 1fr; gap: 0; }
+}
+
+/* =========================================================
    PARCOURS / TIMELINE
    ========================================================= */
 .timeline {

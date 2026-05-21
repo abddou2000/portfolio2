@@ -6,7 +6,7 @@ export default function Footer({ t }) {
           <div>
             <div className="logo" style={{ color: 'var(--paper)', marginBottom: 18 }}>
               Driss<span className="dot" />Boubkiri
-              <small style={{ color: 'var(--gold-soft)' }}>· PhD</small>
+              <small style={{ color: 'var(--gold-soft)' }}>· MSc</small>
             </div>
             <p className="footer-tag">{t.tag}</p>
           </div>
