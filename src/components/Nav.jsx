@@ -17,7 +17,7 @@ export default function Nav({ t, lang, setLang }) {
     <header className={`nav ${scrolled ? 'scrolled' : ''}`}>
       <div className="container nav-inner">
         <a href="#top" className="logo" onClick={closeMenu}>
-          Driss<span className="dot" />Boubkiri
+          Driss Boubkiri
           <small>· MSc</small>
         </a>
 

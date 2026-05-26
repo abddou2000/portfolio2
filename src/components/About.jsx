@@ -2,12 +2,20 @@ export default function About({ t }) {
   return (
     <section id="about" className="alt">
       <div className="container about-grid">
+
         <aside className="reveal">
           <div className="sticky">
             <span className="eyebrow">{t.eyebrow}</span>
-            <div style={{ marginTop: 28 }}>
-              <span className="divider left" />
+
+            <div className="about-portrait-wrap">
+              <img
+                src="/driss-portrait.png"
+                alt="Driss Boubkiri"
+                className="about-portrait"
+                loading="eager"
+              />
             </div>
+
             <p
               className="muted"
               style={{
@@ -15,7 +23,7 @@ export default function About({ t }) {
                 fontSize: '0.72rem',
                 letterSpacing: '0.18em',
                 textTransform: 'uppercase',
-                marginTop: 24,
+                marginTop: 16,
                 lineHeight: 1.7,
               }}
             >
@@ -37,6 +45,7 @@ export default function About({ t }) {
 
           <div className="about-signature">{t.signature}</div>
         </div>
+
       </div>
     </section>
   )
