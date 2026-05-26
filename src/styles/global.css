@@ -574,8 +574,20 @@ section.dark .btn-secondary:hover {
   position: sticky;
   top: 100px;
 }
+
+/* New about layout */
+.about-layout {
+  display: grid;
+  grid-template-columns: 320px 1fr;
+  gap: clamp(40px, 6vw, 100px);
+  align-items: start;
+}
+.about-left {
+  position: sticky;
+  top: 100px;
+}
 .about-portrait-wrap {
-  margin-top: 22px;
+  margin-top: 12px;
   border-radius: var(--radius-sm);
   overflow: hidden;
   aspect-ratio: 3 / 4;
@@ -1226,7 +1238,9 @@ section.dark .btn-secondary:hover {
   .footer-grid { grid-template-columns: 1fr 1fr; }
   .about-grid { grid-template-columns: 1fr; }
   .about-grid .sticky { position: static; }
-  .about-portrait-wrap { max-width: 280px; aspect-ratio: 3 / 4; }
+  .about-layout { grid-template-columns: 1fr; }
+  .about-left { position: static; }
+  .about-portrait-wrap { max-width: 260px; }
   .nav-links { display: none; }
   .mobile-toggle { display: flex; }
   .nav-links.open {
